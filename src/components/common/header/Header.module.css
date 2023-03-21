@@ -1,0 +1,60 @@
+/* Define the style for the header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #070707;
+    color: #fff;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    width: 100%;
+    height: 10vh;
+}
+
+/* Style for the logo or the title of the header */
+.title {
+    font-size: 1.2rem;
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 1.2rem;
+}
+
+/* Style for the navigation links */
+.navbar {
+    width: 100%;
+    height: 10vh;
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+/* Style for the navigation links for logged-in users */
+.user a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+/* Style for the navigation links for guest users */
+.guest a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+/* Style for the active navigation link */
+.header a.active {
+    font-weight: bold;
+}
