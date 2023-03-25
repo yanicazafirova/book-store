@@ -25,11 +25,6 @@ const request = async (method, url, data) => {
         }
         const response = await buildRequest;
 
-        console.log(response);
-        // if (!response.ok) {
-        //     throw new Error('Failed to fetch!');
-        // }
-
         const result = await response.json();
 
         return result;
