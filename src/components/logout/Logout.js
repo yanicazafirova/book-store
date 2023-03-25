@@ -15,7 +15,10 @@ export const Logout = () => {
                 localStorage.clear();
                 navigate('/');
             })
-            
+            .catch((error) => {
+                console.log(error);
+                navigate('/');
+            })
     });
 
     return null;
