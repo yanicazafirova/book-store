@@ -1,0 +1,87 @@
+
+.book-details {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 50px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+    padding-top: 20px;
+}
+
+.text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 30px;
+}
+
+.column1 {
+    width: 35%;
+    height: 100%;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.column1 img {
+    width: 100%;
+    display: block;
+    margin-bottom: 50px;
+}
+
+.column2 {
+    width: 50%;
+    height: 80%;
+}
+
+.buttons .button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.buttons .button:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 30px;
+}
+
+.author {
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.type {
+    font-size: 14px;
+    color: rgb(61, 62, 109);
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .column1,
+    .column2 {
+        width: 100%;
+    }
+}
