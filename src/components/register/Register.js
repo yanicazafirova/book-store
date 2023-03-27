@@ -1,9 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom';
-import styles from './Register.module.css';
-
-import * as authService from '../../services/authService';
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
+
+import * as authService from "../../services/authService";
+
+import styles from './Register.module.css';
 
 export const Register = () => {
     const { userLogin } = useContext(AuthContext);
@@ -41,9 +43,9 @@ export const Register = () => {
                     userLogin(userData);
                     navigate('/');
                 })
-                .catch(() => alert('Failed fetch!'))
-        } catch {
-            return alert('Email or password don\'t match!');
+                .catch((error) => alert(error.message));
+        } catch(error) {
+            throw new Error(error.message);
         }
     }
 
@@ -73,3 +75,5 @@ export const Register = () => {
         </section>
     );
 };
+
+
