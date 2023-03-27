@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthContext";
+
+
 export const Book = (book) => {
+    const { user } = useContext(AuthContext);
 
     return (
         <>
@@ -6,11 +12,14 @@ export const Book = (book) => {
                 <h4>{book.title}</h4>
             </div>
             <div>
-                <img src={book.image_url} alt={book.title} />
+                <Link to={`/books/${book._id}`}><img src={book.imageUrl} alt={book.title} /></Link>
             </div>
-            <div>
-                <button>Add to Favourites</button>
-            </div>
+            {user.email && user._id !== book._ownerId ?
+                <div> 
+                    <button>Add to Favorites</button>
+                </div>
+                : null
+            }
         </>
     );
 };
