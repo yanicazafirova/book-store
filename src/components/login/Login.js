@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../../contexts/AuthContext";
+import * as authService from "../../services/authService";
+
 import styles from './Login.module.css';
-
-import { useContext, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-
-import * as authService from '../../services/authService';
 
 export const Login = () => {
     const { userLogin } = useContext(AuthContext);
@@ -13,7 +13,7 @@ export const Login = () => {
         email: '',
         password: '',
     });
-   
+
     const navigate = useNavigate();
 
     const onChange = (e) => {
@@ -34,13 +34,14 @@ export const Login = () => {
             try {
                 authService.login(email, password)
                     .then(userData => {
+
                         userLogin(userData);
                         navigate('/');
                     })
                     .catch((error) => alert(error.message));
             } catch (error) {
-               
-                alert(error.message);
+                console.log(error.message);
+                throw new Error(error.message);
             }
         }
     };
@@ -67,4 +68,4 @@ export const Login = () => {
             </form>
         </section>
     );
-};
+}
