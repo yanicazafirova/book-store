@@ -1,0 +1,29 @@
+.favorites {
+    min-height: 80vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    text-align: center;
+    padding: 70px;
+}
+
+/* Book */
+img {
+    width: 300px;
+    height: 300px;
+    transition: all 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+.book-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
