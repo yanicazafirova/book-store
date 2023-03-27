@@ -1,5 +1,5 @@
-import { createContext } from 'react';
-import { useLocalStorage } from '../hooks/useLocaleStorage';
+import { createContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const AuthContext = createContext();
 
@@ -8,27 +8,24 @@ export const AuthProvider = ({
 }) => {
     const [auth, setAuth] = useLocalStorage('auth', {});
 
-    const userLogin = (data) => {
+    const userLogin = (authData) => {
         
-        if(data.accessToken){
-            return setAuth(data);
-        }
-        throw new Error(data.message);
-        
-    }
+        setAuth(authData);
+    };
 
     const userLogout = () => {
         setAuth({});
-    }
+    };
 
     return (
         <AuthContext.Provider value={{
             user: auth,
             userLogin,
             userLogout,
-            isAuthenticated: Boolean(auth.accessToken)
+            isAuthenticated: !!auth.accessToken
         }}>
             {children}
         </AuthContext.Provider>
     );
-}
+};
+
