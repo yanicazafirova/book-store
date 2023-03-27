@@ -1,32 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { BookContext } from '../../contexts/BookContext';
 
-import * as bookService from '../../services/bookService';
 import { Book } from './book/Book';
 
 import styles from './BookList.module.css';
 
-
 export const BookList = () => {
-    const [books, setBooks] = useState([]);
-
-    useEffect(() => {
-        bookService.getAll()
-            .then(result => {
-                console.log(result);
-                setBooks(result);
-            })
-            .catch(err => console.log(err));
-    }, []);
-
+    const { books } = useContext(BookContext);
+    
     return (
         <div className={styles["book-list"]}>
-
-            {books.map((book) => (
-                <div key={book.id} className={styles["book-item"]}>
-                    <Book  {...book} />
-                </div>
-            )
-            )}
+            {books.length > 0 ?
+                books.map(book => (
+                    <div key={book._id} className={styles["book-item"]}>
+                        <Book {...book} />
+                    </div>))
+                : <h3 className="no-articles">No books yet</h3>
+            }
         </div>
     );
 };
