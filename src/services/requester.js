@@ -24,17 +24,21 @@ const request = async (method, url, data) => {
             });
         }
         const response = await buildRequest;
-
+        
         const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.message);
+        }
 
         return result;
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 };
 
-export const get = request.bind(null, "GET");
-export const post = request.bind(null, "POST");
-export const put = request.bind(null, "PUT");
-export const patch = request.bind(null, "PATCH");
-export const del = request.bind(null, "DELETE");
+export const get = request.bind({}, 'GET');
+export const post = request.bind({}, 'POST');
+export const patch = request.bind({}, 'PATCH');
+export const put = request.bind({}, 'PUT');
+export const del = request.bind({}, 'DELETE');
