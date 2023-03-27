@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { PrivateRoute } from './components/common/PrivateRoute';
+import { AuthProvider } from './context/AuthContext';
+import { BookProvider } from './context/BookContext';
+
 
 function App() {
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <AuthProvider >
+        <Header />
+        <BookProvider>
+            <Routes>
+                <Route path='/' element={<BookList />} />
+                <Route path='/users/login' element={<Login />} />
+                <Route path='/users/register' element={<Register />} />
+                <Route path='/books/:bookId' element={<BookDetails />} />
+
+                <Route element={<PrivateRoute />}>
+                    <Route path="/books/:bookId/edit" element={<EditBook />} />
+                    <Route path='/books/create' element={<CreateBook />} />
+                    <Route path='/favorites' element={<Favorites />} />
+                    <Route path='/users/logout' element={<Logout />} />
+                </Route>
+                <Route path='/*' element={<NotFound />} />
+            </Routes>
+        </BookProvider>
+        <Footer />
+    </AuthProvider>
+
+</div >
   );
 }
 
