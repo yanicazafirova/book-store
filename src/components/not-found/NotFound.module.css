@@ -1,5 +1,5 @@
 .not-found {
-    background-color: #ffffff;
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
     font-family: Arial, sans-serif;
     position: absolute;
     top: 150px;
@@ -28,7 +28,7 @@ p {
 }
 
 a {
-    color: #4caf50;
+    color: white;
     text-decoration: none;
     font-weight: bold;
 }
