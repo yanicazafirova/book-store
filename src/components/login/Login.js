@@ -48,24 +48,26 @@ export const Login = () => {
 
     return (
         <section className={styles.auth}>
-            <form id="login" onSubmit={onSubmit}>
-                <div className={styles.container}>
+            <div className={styles.center}>
+                <h1>Login</h1>
+                <form onSubmit={onSubmit}>
+                    <div className={styles["txt_field"]}>
+                        <input type="email" name="email" required value={data.email} onChange={(e) => onChange(e)} />
+                        <span></span>
+                        <label>Email</label>
+                    </div>
+                    <div className={styles["txt_field"]}>
+                        <input type="password" name="password" required value={data.password} onChange={(e) => onChange(e)} />
+                        <span></span>
+                        <label>Password</label>
+                    </div>
 
-                    <h1>Login</h1>
-
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="email@abv.bg" value={data.email} onChange={(e) => onChange(e)} />
-                    <label htmlFor="login-pass">Password:</label>
-                    <input type="password" id="login-password" name="password" placeholder="********" value={data.password} onChange={(e) => onChange(e)} />
-
-                    <input type="submit" className={styles["btn-submit"]} value="Login" />
-                    <p className={styles.field}>
-                        <span>
-                            If you don't have profile click <Link to="/users/register">here</Link>
-                        </span>
-                    </p>
-                </div>
-            </form>
+                    <input type="submit" value="Login" />
+                    <div className={styles["signup_link"]}>
+                        If you don't have profile click <Link to="/users/register">here</Link>
+                    </div>
+                </form>
+            </div>
         </section>
     );
 }
