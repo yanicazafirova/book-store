@@ -33,7 +33,7 @@ export const Register = () => {
             return alert('All fields are required!');
         }
 
-        if(password !== confirm){
+        if (password !== confirm) {
             return alert('Passwords do\'t match!');
         }
 
@@ -44,34 +44,37 @@ export const Register = () => {
                     navigate('/');
                 })
                 .catch((error) => alert(error.message));
-        } catch(error) {
+        } catch (error) {
             throw new Error(error.message);
         }
     }
 
     return (
         <section className={styles.auth}>
-            <form id="register" onSubmit={onSubmit}>
-                <div className={styles.container}>
-
-                    <h1>Register</h1>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="email@abv.bg" value={data.email} onChange={(e) => onChange(e)} />
-                    <label htmlFor="login-pass">Password:</label>
-                    <input type="password" id="login-password" name="password" placeholder="********" value={data.password} onChange={(e) => onChange(e)}/>
-                    <label htmlFor="confirm-pass">Confirm Password:</label>
-                    <input type="password" id="confirm" name="confirm" placeholder="********" value={data.confirm} onChange={(e) => onChange(e)}/>
-
-                    <div className={styles.error}>Error</div>
-                    
-                    <input type="submit" className={styles["btn-submit"]} value="Register" />
-                    <p className={styles.field}>
-                        <span>
-                            If you don't have profile click <Link to="/users/login">here</Link>
-                        </span>
-                    </p>
-                </div>
-            </form>
+            <div className={styles.center}>
+                <h1>Register</h1>
+                <form onSubmit={onSubmit}>
+                    <div className={styles["txt_field"]}>
+                        <input type="email" name="email" required value={data.email} onChange={(e) => onChange(e)} />
+                        <span></span>
+                        <label>Email</label>
+                    </div>
+                    <div className={styles["txt_field"]}>
+                        <input type="password" name="password" required value={data.password} onChange={(e) => onChange(e)} />
+                        <span></span>
+                        <label>Password</label>
+                    </div>
+                    <div className={styles["txt_field"]}>
+                        <input type="password" name="confirm" required value={data.confirm} onChange={(e) => onChange(e)} />
+                        <span></span>
+                        <label>Confirm Password</label>
+                    </div>
+                    <input type="submit" value="Register" />
+                    <div className={styles["signup_link"]}>
+                        If you have profile click <Link to="/users/login">here</Link>
+                    </div>
+                </form>
+            </div>
         </section>
     );
 };
