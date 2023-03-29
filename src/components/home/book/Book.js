@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 
+import styles from '../BookList.module.css';
 
 export const Book = (book) => {
     const { user } = useContext(AuthContext);
@@ -16,7 +17,7 @@ export const Book = (book) => {
             </div>
             {user.email && user._id !== book._ownerId ?
                 <div> 
-                    <button>Add to Favorites</button>
+                    <button className={styles.button}>Add to Favorites</button>
                 </div>
                 : null
             }
