@@ -4,6 +4,7 @@ import { BookContext } from '../../contexts/BookContext';
 import { AuthContext } from '../../contexts/AuthContext';
 
 import styles from './BookDetails.module.css';
+import icon from '../../assets/arrow-left-solid.svg';
 
 import * as bookService from '../../services/bookService';
 
@@ -17,10 +18,9 @@ export const BookDetails = () => {
     useEffect(() => {
         bookService.getOne(bookId)
             .then(bookData => {
-                console.log(bookData);
                 setBook(bookData);
             });
-    }, []);
+    }, [bookId]);
 
     const deleteHandler = () => {
         const confirm = window.confirm(`Are you sure you want to delete this book: ${book.title}?`);
@@ -35,11 +35,21 @@ export const BookDetails = () => {
     };
 
     return (
-        <section className={styles["book-details"]}>
-            <h1 className={styles.title}>Book Details</h1>
-            <div className={styles.container}>
-                <div className={styles.column1}>
-                    <img className={styles.img} src={book.imageUrl} alt={book.title} />
+        <div className={styles.container}>
+            <div className={styles.box}>
+                <div className={styles.images}>
+                    <div className={styles["img-holder active"]}>
+                        <img src={book.imageUrl} alt={book.title}/>
+                    </div>
+                </div>
+                <div className={styles["basic-info"]}>
+                    <h2>Title: {book.title}</h2>
+
+                    <h4>Genre: {book.genre}</h4>
+                </div>
+                <div className={styles.description}>
+
+                    <div><h3>Description:</h3>{book.description}</div>
                     {user._id === book._ownerId ?
                         <div className={styles.buttons}>
                             <Link to={`/books/${book._id}/edit`} className={styles.button}>Edit</Link>
@@ -48,18 +58,10 @@ export const BookDetails = () => {
                         : null
                     }
                 </div>
-                <div className={styles.column2}>
-                    <h1 className={styles.title}>Title: {book.title}</h1>
-                    <span className={styles["author"]}>Author: {book.author}</span>
-                    <p className={styles.type}>Genre: {book.genre}</p>
-                    <p className={styles.text}>
-                        Description: {book.description}
-                    </p>
 
-                </div>
-
+                <Link to="/"><img src={icon} className={styles.back} /></Link>
             </div>
-        </section>
+        </div>
     );
 };
 

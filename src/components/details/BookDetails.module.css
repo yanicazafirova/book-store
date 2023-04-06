@@ -1,4 +1,4 @@
-
+/* 
 .book-details {
     margin: 50px auto;
     max-width: 800px;
@@ -83,5 +83,250 @@
     .column1,
     .column2 {
         width: 100%;
+    }
+} */
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+:root {
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    background-color: var(--primary-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.box {
+    background-color: #00b4d5;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 1px rgb(0, 0, 0, 12%);
+    padding: 45px;
+    margin: 15px 0;
+    width: 950px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "images info"
+        "images description";
+    grid-gap: 35px;
+    color: #3f0857;
+}
+
+.box .images {
+    grid-area: images;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "active active active"
+        "idle idle idle";
+    grid-gap: 5px;
+}
+
+.box .images .img-holder img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+.box .images .img-holder.active {
+    grid-area: active;
+}
+
+.box .images .img-holder:not(.active):hover {
+    opacity: 0.95;
+    cursor: pointer;
+}
+
+.box .basic-info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.box .basic-info .rate {
+    color: var(--yellow-color);
+}
+
+.box .basic-info span {
+    font-weight: 800;
+    font-size: 25px;
+}
+
+.box .description {
+    grid-area: description;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.box .description p {
+    color: var(--gray-color);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.box .description .features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--gray-color);
+}
+
+.box .description .features i {
+    margin-right: 5px;
+}
+
+.box .description .features .fa-circle-check {
+    color: var(--tertiary-color);
+}
+
+.box .description .features .fa-circle-xmark {
+    color: var(--yellow-color);
+}
+
+.box .description .social {
+    list-style: none;
+    display: flex;
+}
+
+.box .description .social a {
+    margin-right: 15px;
+    color: var(--gray-color);
+}
+
+.box .description .social a:hover {
+    color: var(--secondary-color);
+}
+
+.buttons .button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.buttons .button:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+/* Style buttons */
+.btn {
+    background-color: DodgerBlue;
+    /* Blue background */
+    border: none;
+    /* Remove borders */
+    color: white;
+    /* White text */
+    padding: 12px 16px;
+    /* Some padding */
+    font-size: 16px;
+    /* Set a font size */
+    cursor: pointer;
+    border-radius: 5px;
+    /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.divBtn {
+    padding-left: 10px;
+}
+
+.back {
+    height: 20px;
+    justify-content: center;
+}
+
+@media (max-width: 991px) {
+    .box {
+        width: 750px;
+        grid-template-areas:
+            "info info"
+            "images description";
+    }
+
+    .box .basic-info .options a {
+        padding: 8.5px 12px;
+    }
+}
+
+@media screen and (max-width: 991px) and (min-width: 769px) {
+    .box .basic-info span {
+        position: absolute;
+        align-self: flex-end;
+    }
+
+    .box .basic-info .options {
+        position: absolute;
+        align-self: flex-end;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .box {
+        width: 600px;
+        grid-template-areas:
+            "images info"
+            "description description";
+    }
+
+    .box .images {
+        gap: 3px;
+    }
+
+    .box .images .img-holder img {
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 640px) {
+    .box {
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        padding: 35px;
+        margin: 0;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:
+            "images"
+            "info"
+            "description";
     }
 }
