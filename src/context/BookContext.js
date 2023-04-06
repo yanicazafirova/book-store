@@ -1,8 +1,7 @@
-import { createContext, useReducer, useEffect, useState, useContext } from "react";
+import { createContext, useReducer, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import * as bookService from '../services/bookService';
-import { AuthContext } from "./AuthContext";
 
 export const BookContext = createContext();
 
@@ -34,7 +33,6 @@ export const BookProvider = ({
     useEffect(() => {
         bookService.getAll()
             .then(result => {
-                console.log(result);
                 const action = {
                     type: 'GET_BOOKS',
                     payload: result
