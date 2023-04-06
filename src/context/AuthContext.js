@@ -9,12 +9,12 @@ export const AuthProvider = ({
     const [auth, setAuth] = useLocalStorage('auth', {});
 
     const userLogin = (authData) => {
-        
         setAuth(authData);
     };
 
     const userLogout = () => {
         setAuth({});
+        localStorage.clear();
     };
 
     return (
@@ -22,7 +22,7 @@ export const AuthProvider = ({
             user: auth,
             userLogin,
             userLogout,
-            isAuthenticated: !!auth.accessToken
+            isAuthenticated: !!auth.accessToken,
         }}>
             {children}
         </AuthContext.Provider>
