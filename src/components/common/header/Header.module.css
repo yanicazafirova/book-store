@@ -3,8 +3,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #070707;
-    color: #fff;
+    background: black;
+    color: #000000;
     padding: 1rem;
     position: fixed;
     top: 0;
@@ -17,14 +17,14 @@
 
 /* Style for the logo or the title of the header */
 .title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0;
     color: white;
     font-weight: bold;
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin-top: 1.2rem;
+    margin-top: 0.3rem;
 }
 
 /* Style for the navigation links */
@@ -57,4 +57,9 @@
 /* Style for the active navigation link */
 .header a.active {
     font-weight: bold;
+}
+
+.book {
+    height: 50px;
+    padding-top: 50px;
 }
