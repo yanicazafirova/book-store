@@ -27,7 +27,7 @@ export const Login = () => {
         e.preventDefault();
 
         const { email, password } = Object.fromEntries(new FormData(e.target));
-
+     
         if (email === '' || password === '') {
             return alert('All fields are required!');
         } else {
@@ -52,12 +52,12 @@ export const Login = () => {
                 <h1>Login</h1>
                 <form onSubmit={onSubmit}>
                     <div className={styles["txt_field"]}>
-                        <input type="email" name="email" required value={data.email} onChange={(e) => onChange(e)} />
+                        <input type="email" name="email" required value={data.email} onChange={(e) => onChange(e)}/>
                         <span></span>
                         <label>Email</label>
                     </div>
                     <div className={styles["txt_field"]}>
-                        <input type="password" name="password" required value={data.password} onChange={(e) => onChange(e)} />
+                        <input type="password" name="password" required value={data.password} onChange={(e) => onChange(e)}/>
                         <span></span>
                         <label>Password</label>
                     </div>
@@ -71,3 +71,5 @@ export const Login = () => {
         </section>
     );
 }
+
+
