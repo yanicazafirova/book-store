@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { BookContext } from '../../contexts/BookContext';
 
 import * as bookService from '../../services/bookService';
+import { CloseBtn } from '../common/close-button/CloseBtn';
 
 import styles from './EditBook.module.css';
 
@@ -58,6 +59,7 @@ export const EditBook = () => {
     return (
         <section id="edit-page" className={styles.auth}>
             <div className={styles.center}>
+                <CloseBtn book={book}/>
                 <h1>Edit book</h1>
                 <form onSubmit={onSubmit}>
                     <div className={styles["txt_field"]}>
@@ -92,3 +94,4 @@ export const EditBook = () => {
         </section>
     );
 }
+
