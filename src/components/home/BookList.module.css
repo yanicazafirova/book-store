@@ -47,3 +47,47 @@ img:hover {
     transition: all 0.3s ease;
     font-family: 'Times New Roman', Times, serif;
 }
+
+.search {
+    padding-top: 110px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    padding-left: 500px;
+    padding-right: 500px;
+}
+
+.searchInput {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+    font-size: 16px;
+    flex-grow: 1;
+    outline: none;
+}
+
+.searchInput:focus {
+    border: 5px solid #29435f;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #29435f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.img {
+    height: 20px;
+    width: 20px;
+}
+
+.no-articles {
+    color: rgb(71, 15, 15);
+}
