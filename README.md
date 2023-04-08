@@ -1,6 +1,15 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run this project locally, follow the steps below:
+
+1. Clone this repository to your local machine using git clone https://github.com/yanicazafirova/book-store.git
+2. Install all the dependencies by running npm install
+3. Start the development server by running npm start
+4. Open your browser and navigate to http://localhost:3000
+
+## Intro
+
+This is a book project built with React, designed to help you organize and manage your personal book library.
 
 ## Available Scripts
 
@@ -38,6 +47,37 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Features
+
+This project comes with the following features:
+
+Ability to add books to your library with the following details:
+
+### Title
+### Author
+### Genre
+### Cover Image URL
+### Description
+
+Ability to view all the books in your library
+Ability to edit book details or delete a book from your library
+
+# Dependencies
+
+This project uses the following dependencies:
+
+### react
+### react-dom
+### react-router-dom
+### react-scripts
+
+# Technologies
+
+### ReactJS
+### JavaScript
+### HTML
+### CSS
 
 ## Learn More
 
