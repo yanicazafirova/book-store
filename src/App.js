@@ -16,6 +16,7 @@ import { NotFound } from './components/not-found/NotFound';
 import { Logout } from './components/logout/Logout';
 import { BookDetails } from './components/details/BookDetails';
 import { EditBook } from './components/edit/EditBook';
+import { MyProfile } from './components/my-profile/MyProfile';
 
 //All book data which is rendering is in assets folder
 
@@ -35,6 +36,7 @@ function App() {
 
                         <Route element={<PrivateRoute />}>
                             <Route path="/books/:bookId/edit" element={<EditBook />} />
+                            <Route path='/books/my-profile' element={<MyProfile />} />
                             <Route path='/books/create' element={<CreateBook />} />
                             <Route path='/users/logout' element={<Logout />} />
                         </Route>
