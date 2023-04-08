@@ -3,17 +3,20 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { BookContext } from '../../contexts/BookContext';
 import { AuthContext } from '../../contexts/AuthContext';
 
+import * as bookService from '../../services/bookService';
+
 import styles from './BookDetails.module.css';
 import icon from '../../assets/arrow-left-solid.svg';
+import heart from '../../assets/heart-regular.svg';
 
-import * as bookService from '../../services/bookService';
 
 export const BookDetails = () => {
     const { bookId } = useParams();
     const navigate = useNavigate();
-    const { removeBook } = useContext(BookContext);
+    const { removeBook, updateBook } = useContext(BookContext);
     const { user } = useContext(AuthContext);
     const [book, setBook] = useState({});
+    const [isLiked, setIsLiked] = useState(false);
 
     useEffect(() => {
         bookService.getOne(bookId)
@@ -21,6 +24,20 @@ export const BookDetails = () => {
                 setBook(bookData);
             });
     }, [bookId]);
+
+    const onLike = () => {
+        if (!book.likes?.includes(user._id)) {
+            book.likes?.push(user._id);
+            setIsLiked(true);
+        }
+        if (user.email) {
+            bookService.edit(bookId, { likes: book.likes })
+                .then(() => updateBook(bookId, { likes: book.likes }))
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    }
 
     const deleteHandler = () => {
         const confirm = window.confirm(`Are you sure you want to delete this book: ${book.title}?`);
@@ -39,7 +56,7 @@ export const BookDetails = () => {
             <div className={styles.box}>
                 <div className={styles.images}>
                     <div className={styles["img-holder active"]}>
-                        <img src={book.imageUrl} alt={book.title}/>
+                        <img src={book.imageUrl} alt={book.title} />
                     </div>
                 </div>
                 <div className={styles["basic-info"]}>
@@ -55,13 +72,18 @@ export const BookDetails = () => {
                             <Link to={`/books/${book._id}/edit`} className={styles.button}>Edit</Link>
                             <Link to="#" className={styles.button} onClick={deleteHandler}>Delete</Link>
                         </div>
-                        : null
+                        :
+                        <div>
+                            {!isLiked ? <img src={heart} alt='heart' className={styles.back} onClick={onLike}></img> : <p>You've like this post!</p>}
+                        </div>
                     }
                 </div>
 
+
+
                 <Link to="/"><img src={icon} className={styles.back} /></Link>
             </div>
-        </div>
+        </div >
     );
 };
 
